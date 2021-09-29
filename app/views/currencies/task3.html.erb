@@ -1,0 +1,31 @@
+<h1>Sparkline payloads</h1>
+
+<%= form_tag(task3_currencies_path) do %>
+  <label>Currencies (separated by comma): </label>
+  <%= text_field_tag 'ids', @ids %>
+  <br />
+
+  <label>Convert:</label>
+  <%= select_tag "convert", options_for_select(["USD", "EUR"], @convert) %>
+  <br />
+
+  <label>Start:</label>
+  <%= date_field_tag "start",  @start, max: Date.today %>
+  <br />
+
+  <label>End:</label>
+  <%= date_field_tag "end",  @end, max: Date.today %>
+  <br />
+
+  <%= submit_tag 'Submit' %>
+<% end %>
+
+<br />
+<br />
+
+<% if @payloads.any? %>
+  <h3>Payloads</h3>
+  <pre><%= JSON.pretty_generate(@payloads) %></pre>
+<% end %>
+
+<%= link_to("home", root_path) %>

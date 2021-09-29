@@ -1,0 +1,20 @@
+<h1>Currencies payloads</h1>
+
+<%= form_tag(task1_currencies_path) do %>
+  <label>Currencies (separated by comma): </label>
+  <%= text_field_tag 'ids', @ids %>
+
+  <br />
+
+  <%= submit_tag 'Submit' %>
+<% end %>
+
+<br />
+<br />
+
+<% if @payloads.any? %>
+  <h3>Payloads</h3>
+  <pre><%= JSON.pretty_generate(@payloads) %></pre>
+<% end %>
+
+<%= link_to("home", root_path) %>

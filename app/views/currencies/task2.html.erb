@@ -1,0 +1,33 @@
+<h1>Tickers payloads</h1>
+
+<%= form_tag(task2_currencies_path) do %>
+  <label>Currencies (separated by comma): </label>
+  <%= text_field_tag 'ids', @ids %>
+
+  <br />
+  <label>Interval:</label>
+  <%= select_tag "interval", options_for_select(["1d,7d,30d,365d,ytd", "1h", "1d", "7d", "30d", "365d", "ytd"], @interval) %>
+
+  <br />
+  <label>Convert:</label>
+  <%= select_tag "convert", options_for_select(["USD", "EUR"], @convert) %>
+
+  <br />
+
+  <label>Status:</label>
+  <%= select_tag "status", options_for_select(["active", "inactive", "dead"], @status) %>
+
+  <br />
+
+  <%= submit_tag 'Submit' %>
+<% end %>
+
+<br />
+<br />
+
+<% if @payloads.any? %>
+  <h3>Payloads</h3>
+  <pre><%= JSON.pretty_generate(@payloads) %></pre>
+<% end %>
+
+<%= link_to("home", root_path) %>
