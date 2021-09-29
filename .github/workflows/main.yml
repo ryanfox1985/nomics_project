@@ -13,3 +13,5 @@ jobs:
 
     # run RSpec tests
     - run: bundle exec rspec
+      env:
+        NOMICS_KEY: ${{ secrets.NOMICS_KEY }}
